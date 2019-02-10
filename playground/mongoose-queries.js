@@ -29,7 +29,7 @@ Todo.findById(id).then((todo) => {
     if(!todo){
         return console.log('No results');
     }
-    console.log('Todo by ID :'. todo);
+    console.log('Todo by ID :', todo);
 }, (e) => {
     console.log(e);
 });
