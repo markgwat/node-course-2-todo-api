@@ -5,10 +5,13 @@ var {mongoose} = require('../db/mongoos');
 var {Todo,User} = require('./model');
 
 var app = express();
+// Heroku
+const port = process.env.PORT || 3000
+
 app.use(bodyParser.json());
 
-app.listen(3000, () => {
-    console.log('server started on 3000')
+app.listen(port, () => {
+    console.log('server started on '+port)
 })
 // POST ADDING A TO DO
 app.post('/todos', (req, res) => {
