@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const {ObjectID} = require('mongodb');
 var {mongoose} = require('../db/mongoos');
 var {Todo,User} = require('./model');
-
+var {authenticate} = require('./middleware/authenticate');
 var app = express();
 // Heroku
 const port = process.env.PORT;
@@ -125,6 +125,10 @@ app.post('/users', (req, res) => {
         res.status(400).send(e);
     });
 
+});
+
+app.get('/users/me', authenticate, (req, res) =>{
+    res.send(req.user);
 });
 
 module.exports = { app };
